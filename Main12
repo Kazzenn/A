@@ -1,0 +1,58 @@
+class BankAccount {
+    private String accountName;
+    private String accountNumber;
+    private double balance;
+
+    public BankAccount() {
+        this.accountName = accountName;
+        this.accountNumber = "123456";
+        this.balance = 0;
+    }
+
+    public BankAccount(String accountHolderName, String accountNumber) {
+        this.accountName = accountHolderName;
+        this.accountNumber = accountNumber;
+        this.balance = 0; 
+    }
+
+    public BankAccount(String accountHolderName, String accountNumber, double nowBalance) {
+        this.accountName = accountHolderName;
+        this.accountNumber = accountNumber;
+        this.balance = nowBalance;
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("ฝากเงิน: " + amount + " | ยอดคงเหลือใช้งานได้: " + balance);
+        } else {
+            System.out.println("ยอดเงินฝากไม่สามารถติดลบได้");
+        } System.out.println(" ");
+    }
+
+    public void deposit(double[] amounts) {
+        for (double amount : amounts) {
+            deposit(amount); 
+        }
+    }
+    public void displayAccountInfo() {
+        System.out.println("ชื่อบัญชี: " + accountName);
+        System.out.println("หมายเลขบัญชี: " + accountNumber);
+        System.out.println("ยอดคงเหลือ: " + balance);
+    }
+}
+
+public class Main12 {
+    public static void main(String[] args) {
+        BankAccount account1 = new BankAccount();
+        System.out.println("------DefultDisplay------");
+        account1.displayAccountInfo();
+        System.out.println("------------");
+        BankAccount account2 = new BankAccount("A1", "111111", 1000.0);
+        account2.displayAccountInfo();
+        account2.deposit(1000); 
+        BankAccount account3 = new BankAccount("B2", "222222", 500.0);
+        account3.displayAccountInfo();
+        account3.deposit(500); 
+    }
+}
